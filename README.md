@@ -13,3 +13,5 @@ npx hardhat node
 node scripts/sample-script.js
 npx hardhat help
 ```
+
+https://dev.to/dabit3/building-scalable-full-stack-apps-on-ethereum-with-polygon-2cfb
