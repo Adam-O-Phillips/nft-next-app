@@ -67,13 +67,13 @@ console.log(`name = ${name}, description = ${description}, price = ${price}`);
         let event = tx.events[0]
         let value = event.args[2]
         let tokenId = value.toNumber()
-        const price = ethers.utils.parseUnits(formInput.price, 'ether')
+        const price3 = ethers.utils.parseUnits(formInput.price, 'ether')
 
         contract = new ethers.Contract(nftmarketaddress, Market.abi, signer)
         let listingPrice = await contract.getListingPrice()
         listingPrice = listingPrice.toString()
 
-        transaction = await contract.createMarketItem(nftaddress, tokenId, price, {value: listingPrice})
+        transaction = await contract.createMarketItem(nftaddress, tokenId, price3, {value: listingPrice})
         await transaction.wait()
         router.push('/')
     }
