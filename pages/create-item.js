@@ -36,6 +36,7 @@ export default function CreateItem() {
 
     async function createMarket() {
         const {name, description, price} = formInput
+console.log(`name = ${name}, description = ${description}, price = ${price}`);
         if (!name || !description || !price || !fileUrl) return
 
         const data = JSON.stringify({
@@ -60,7 +61,7 @@ export default function CreateItem() {
         const provider = new ethers.providers.Web3Provider(connection)
         const signer = provider.getSigner()
 
-        let contract = new ethers.Contract(nftaddresss, NFT_test.abi, signer)
+        let contract = new ethers.Contract(nftaddress, NFT_test.abi, signer)
         let transaction = await contract.createToken(url)
         let tx = await transaction.wait()
         let event = tx.events[0]
@@ -82,7 +83,7 @@ export default function CreateItem() {
             <div className='w-1/2 flex flex-col pb-12'>
                 <input placeholder="Asset Name" className="mt-8 border rounded p-4" onChange={e => updateFormInput({...formInput, name: e.target.value})} />
                 <textarea placeholder="Asset Description" className="mt-2 border rounded p-4" onChange={e => updateFormInput({...formInput, description: e.target.value})} />
-                <input placeholder="Asset Price in Eth" className="mt-2 border rounded p-4" onChange={e => updateFormInput({...formInput, price: e.target.vaule})} />
+                <input placeholder="Asset Price in Eth" className="mt-2 border rounded p-4" onChange={e => updateFormInput({...formInput, price: e.target.value})} />
                 <input type="file" name="Asset" className="my-4" onChange={onChange} />
                 {
                     fileUrl && (
