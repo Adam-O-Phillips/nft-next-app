@@ -14,7 +14,7 @@ contract NFT_test is ERC721URIStorage {
     Counters.Counter private _tokenIds;
     address contractAddress;
 
-    constructor (address marketplaceAddress) ERC721("Metaverse TOkens", "METT") {
+    constructor (address marketplaceAddress) ERC721("Metaverse Tokens", "METT") {
         contractAddress = marketplaceAddress;
     }
 
