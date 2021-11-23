@@ -16,9 +16,11 @@ export default function Home() {
       loadNFTs();
     }, []);
   async function loadNFTs() {
-    const provider = new ethers.providers.JsonRpcProvider();
+    const provider = new ethers.providers.JsonRpcProvider("https://rpc-mumbai.maticvigil.com");
     const tokenContract = new ethers.Contract(nftaddress, NFT_test.abi, provider);
+    console.log(`NFT token address = ${nftaddress}`);
     const marketContract = new ethers.Contract(nftmarketaddress, Market.abi, provider)
+    console.log(`NFT market address = ${nftmarketaddress}`);
     const data = await marketContract.fetchMarketItems()
 
     const items = await Promise.all(data.map(async i => {
